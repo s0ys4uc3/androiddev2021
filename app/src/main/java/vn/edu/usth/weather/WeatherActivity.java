@@ -11,10 +11,12 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ForecastFragment firstFragment = new ForecastFragment();
+//        uppercloud kumoriFragment = new uppercloud();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         Toast.makeText(getApplicationContext(), "onCreate()", Toast.LENGTH_SHORT).show();
         getSupportFragmentManager().beginTransaction().replace(R.id.container_,firstFragment).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.kumori, kumoriFragment).commit();
     }
 
     protected void onStart() {
