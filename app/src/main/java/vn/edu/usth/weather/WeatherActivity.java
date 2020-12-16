@@ -8,7 +8,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TableLayout;
 import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -23,8 +26,10 @@ public class WeatherActivity extends AppCompatActivity {
 //        getSupportFragmentManager().beginTransaction().replace(R.id.kumori, kumoriFragment).commit();
         PagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager());
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLo);
         pager.setOffscreenPageLimit(3);
         pager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(pager);
     }
 
     protected void onStart() {
