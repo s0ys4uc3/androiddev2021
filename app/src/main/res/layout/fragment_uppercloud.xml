@@ -7,22 +7,29 @@
     tools:context=".uppercloud">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="12C\nCloudy"
-        />
-
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12C"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kumori"/>
+    </LinearLayout>
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/bigCloud"
+        android:layout_height="@dimen/bigCloud"
         android:layout_centerInParent="true"
         android:src="@drawable/cloud" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="Paris"/>
+        android:text="@string/hanoi"/>
 
 </RelativeLayout>

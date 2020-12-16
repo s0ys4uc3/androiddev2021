@@ -18,22 +18,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Mon" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Mon" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Partly Cloudy" />
+                android:text="@string/oomunekumori" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,22 +51,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Tue" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Tue" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Showers" />
+                android:text="@string/showers" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,22 +84,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Wed" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Wed" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rain" />
+                android:text="@string/ame" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,22 +117,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Thu" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Thu" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scattered Showers" />
+                android:text="@string/sshowers" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,22 +150,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Fri" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Fri" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mostly Cloudy" />
+                android:text="@string/oomunekumori" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -183,22 +183,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Sat" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Sat" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Partly Cloudy" />
+                android:text="@string/tkdkkumori" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -216,22 +216,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Sun" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Sun" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thunderstorms" />
+                android:text="@string/raiu" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -249,22 +249,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Mon" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Mon" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scattered Thunderstorms" />
+                android:text="@string/sraiu" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -282,22 +282,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Tue" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Tue" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Showers" />
+                android:text="@string/showers" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -315,22 +315,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:width="75dp"
-            android:text="Wed" />
+            android:width="@dimen/dateWidth"
+            android:text="@string/Wed" />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/imgDim"
+            android:layout_height="@dimen/imgDim"
             android:src="@drawable/cloud" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/marginDes"
             android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scattered Thunderstorms" />
+                android:text="@string/sraiu" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -2,4 +2,20 @@
     <string name="app_name">USTH Weather</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kumori">Cloudy</string>
+    <string name="tkdkkumori">Partly Cloudy</string>
+    <string name="showers">Showers</string>
+    <string name="sshowers">Scattered Showers</string>
+    <string name="oomunekumori">Mostly Cloudy</string>
+    <string name="raiu">Thunderstorms</string>
+    <string name="sraiu">Scattered Thunderstorms</string>
+    <string name="ame">Rain</string>
+    <string name="hanoi">Hanoi</string>
+    <string name="Mon">Mon</string>
+    <string name="Tue">Tue</string>
+    <string name="Wed">Wed</string>
+    <string name="Thu">Thu</string>
+    <string name="Fri">Fri</string>
+    <string name="Sat">Sat</string>
+    <string name="Sun">Sun</string>
 </resources>

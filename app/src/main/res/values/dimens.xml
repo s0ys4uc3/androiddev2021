@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tabLayoutHeight">50dp</dimen>
+    <dimen name="imgDim">50dp</dimen>
+    <dimen name="dateWidth">75dp</dimen>
+    <dimen name="marginDes">20dp</dimen>
+    <dimen name="bigCloud">200dp</dimen>
+</resources>
