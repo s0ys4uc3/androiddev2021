@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.io.InputStream;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -31,6 +35,9 @@ public class WeatherActivity extends AppCompatActivity {
         pager.setOffscreenPageLimit(3);
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
+        InputStream is = getApplicationContext().getResources().openRawResource(R.raw.aqside);
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.aqside);
+        mediaPlayer.start(); // no need to call prepare(); create() does that for you
     }
 
     protected void onStart() {
