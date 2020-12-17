@@ -6,12 +6,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.media.AudioAttributes;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -19,6 +21,28 @@ import com.google.android.material.tabs.TabLayout;
 import java.io.InputStream;
 
 public class WeatherActivity extends AppCompatActivity {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.overmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.rafraichir:
+                Toast.makeText(getApplicationContext(), "Refreshing", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.settei:
+                Intent setteiIntent = new Intent(this, PrefActivity.class);
+                startActivity(setteiIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +59,10 @@ public class WeatherActivity extends AppCompatActivity {
         pager.setOffscreenPageLimit(3);
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
-        InputStream is = getApplicationContext().getResources().openRawResource(R.raw.aqside);
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.aqside);
+//        InputStream is = getApplicationContext().getResources().openRawResource(R.raw.aqside);
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.start);
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
+
     }
 
     protected void onStart() {
@@ -96,4 +121,5 @@ public class WeatherActivity extends AppCompatActivity {
             return titles[page];
         }
     }
+
 }
