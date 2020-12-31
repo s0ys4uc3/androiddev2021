@@ -9,11 +9,13 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -27,16 +29,46 @@ public class WeatherActivity extends AppCompatActivity {
         inflater.inflate(R.menu.overmenu, menu);
         return true;
     }
-
+    final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            //This method is executed in main thread
+            String content = msg.getData().getString("server_response");
+            Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
+        }
+    };
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.rafraichir:
-                Toast.makeText(getApplicationContext(), "Refreshing", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Refreshing", Toast.LENGTH_LONG).show();
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //this method run in a worker thread
+                        try {
+                            Thread.sleep(0);
+                        }
+                        catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+
+                        //Assume that we got our data from server
+                        Bundle bundle = new Bundle();
+                        bundle.putString("server_response", "some sample json her   e");
+
+                        //notify main thread
+                        Message msg = new Message();
+                        msg.setData(bundle);
+                        handler.sendMessage(msg);
+                    }
+                });
+                t.start();
                 return true;
             case R.id.settei:
-                Intent setteiIntent = new Intent(this, PrefActivity.class);
+                  Intent setteiIntent = new Intent(this, PrefActivity.class);
                 startActivity(setteiIntent);
                 return true;
             default:
@@ -62,6 +94,7 @@ public class WeatherActivity extends AppCompatActivity {
 //        InputStream is = getApplicationContext().getResources().openRawResource(R.raw.aqside);
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.start);
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
+
 
     }
 
