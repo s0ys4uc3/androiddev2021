@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,9 +21,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
@@ -106,52 +112,74 @@ public class WeatherActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.start);
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
-        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
-            @Override
-            protected void onPreExecute() {
-            }
-            @Override
-            protected Bitmap doInBackground(String... strings) {
+//        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
+//            @Override
+//            protected void onPreExecute() {
+//            }
+//            @Override
+//            protected Bitmap doInBackground(String... strings) {
+////                try {
+////                    Thread.sleep(5000);
+////                } catch (InterruptedException e) {
+////                    e.printStackTrace();
+////                }
+////                return null;
 //                try {
-//                    Thread.sleep(5000);
-//                } catch (InterruptedException e) {
+//                    URL url = new URL("https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/");
+//
+//                    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+//                    connection.setRequestMethod("GET");
+//                    connection.setDoInput(true);
+//                    connection.connect();
+//
+//                    int response = connection.getResponseCode();
+//                    Log.i("USTHWeather", "Response: " + response);
+//                    InputStream is = connection.getInputStream();
+//
+//                    Bitmap bm = BitmapFactory.decodeStream(is);
+//                    LinearLayout logo = (LinearLayout) findViewById(R.id.custombg);
+//                    BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), bm);
+//                    bitimg.setAlpha(75);
+//                    logo.setBackground(bitimg);
+//                } catch (MalformedURLException | ProtocolException e) {
+//                    e.printStackTrace();
+//                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
 //                return null;
-                try {
-                    URL url = new URL("https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/");
+//            }
+//            @Override
+//            protected void onProgressUpdate(Integer... values){
+//
+//            }
+//            @Override
+//            protected void onPostExecute(Bitmap bitmap){
+//                Toast.makeText(getApplicationContext(), "Image downloaded", Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//        task.execute("https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/");
 
-                    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setDoInput(true);
-                    connection.connect();
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
-                    int response = connection.getResponseCode();
-                    Log.i("USTHWeather", "Response: " + response);
-                    InputStream is = connection.getInputStream();
-
-                    Bitmap bm = BitmapFactory.decodeStream(is);
-                    LinearLayout logo = (LinearLayout) findViewById(R.id.custombg);
-                    BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), bm);
+        Response.Listener<Bitmap> listener = new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                LinearLayout ln = (LinearLayout) findViewById(R.id.custombg);
+                BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), response);
                     bitimg.setAlpha(75);
-                    logo.setBackground(bitimg);
-                } catch (MalformedURLException | ProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-            @Override
-            protected void onProgressUpdate(Integer... values){
-
-            }
-            @Override
-            protected void onPostExecute(Bitmap bitmap){
-                Toast.makeText(getApplicationContext(), "Image downloaded", Toast.LENGTH_SHORT).show();
+                    ln.setBackground(bitimg);
             }
         };
-        task.execute("https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/");
+
+        ImageRequest imageRequest = new ImageRequest(
+                "https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/",
+                listener,
+                0,
+                0, ImageView.ScaleType.CENTER,
+                Bitmap.Config.ARGB_8888,
+                null);
+
+        queue.add(imageRequest);
     }
 
     protected void onStart() {
