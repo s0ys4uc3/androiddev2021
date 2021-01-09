@@ -8,6 +8,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,11 +20,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class WeatherActivity extends AppCompatActivity {
     @Override
@@ -103,9 +112,32 @@ public class WeatherActivity extends AppCompatActivity {
             }
             @Override
             protected Bitmap doInBackground(String... strings) {
+//                try {
+//                    Thread.sleep(5000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                return null;
                 try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
+                    URL url = new URL("https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/");
+
+                    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setDoInput(true);
+                    connection.connect();
+
+                    int response = connection.getResponseCode();
+                    Log.i("USTHWeather", "Response: " + response);
+                    InputStream is = connection.getInputStream();
+
+                    Bitmap bm = BitmapFactory.decodeStream(is);
+                    LinearLayout logo = (LinearLayout) findViewById(R.id.custombg);
+                    BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), bm);
+                    bitimg.setAlpha(75);
+                    logo.setBackground(bitimg);
+                } catch (MalformedURLException | ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return null;
