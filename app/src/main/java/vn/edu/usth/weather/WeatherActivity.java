@@ -83,6 +83,27 @@ public class WeatherActivity extends AppCompatActivity {
 //                    }
 //                });
 //                t.start();
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+                Response.Listener<Bitmap> listener = new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap response) {
+                        LinearLayout ln = (LinearLayout) findViewById(R.id.custombg);
+                        BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), response);
+                        bitimg.setAlpha(75);
+                        ln.setBackground(bitimg);
+                    }
+                };
+
+                ImageRequest imageRequest = new ImageRequest(
+                        "https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/",
+                        listener,
+                        0,
+                        0, ImageView.ScaleType.CENTER,
+                        Bitmap.Config.ARGB_8888,
+                        null);
+
+                queue.add(imageRequest);
                 return true;
             case R.id.settei:
                   Intent setteiIntent = new Intent(this, PrefActivity.class);
@@ -159,27 +180,7 @@ public class WeatherActivity extends AppCompatActivity {
 //        };
 //        task.execute("https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/");
 
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
-        Response.Listener<Bitmap> listener = new Response.Listener<Bitmap>() {
-            @Override
-            public void onResponse(Bitmap response) {
-                LinearLayout ln = (LinearLayout) findViewById(R.id.custombg);
-                BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), response);
-                    bitimg.setAlpha(75);
-                    ln.setBackground(bitimg);
-            }
-        };
-
-        ImageRequest imageRequest = new ImageRequest(
-                "https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/",
-                listener,
-                0,
-                0, ImageView.ScaleType.CENTER,
-                Bitmap.Config.ARGB_8888,
-                null);
-
-        queue.add(imageRequest);
     }
 
     protected void onStart() {
