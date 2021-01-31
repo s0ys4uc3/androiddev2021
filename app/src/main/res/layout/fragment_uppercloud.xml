@@ -39,5 +39,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
+        android:id="@+id/fururin"
         android:text="@string/hanoi"/>
 </RelativeLayout>

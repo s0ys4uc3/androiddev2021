@@ -4,24 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/combination"
     tools:context=".WeatherAndForecastFragment">
 
     <!-- TODO: Update blank fragment overflowMenu -->
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+    <!--        class="vn.edu.usth.weather.uppercloud"-->
+<!--        tools:layout="@layout/fragment_uppercloud"/>-->
+
+    <FrameLayout
         android:id="@+id/kumori"
-        android:layout_margin="10dp"
-        class="vn.edu.usth.weather.uppercloud"
-        tools:layout="@layout/fragment_uppercloud"/>
-    <fragment
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
+
+    <FrameLayout
+        android:id="@+id/forecast_"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="10dp"
-        android:id="@+id/container_"
-        class="vn.edu.usth.weather.ForecastFragment"
-        tools:layout="@layout/fragment_forecast"/>
+        android:layout_weight="1" />
+    <!--        class="vn.edu.usth.weather.ForecastFragment"-->
+<!--        tools:layout="@layout/fragment_forecast"/>-->
 
 </LinearLayout>
