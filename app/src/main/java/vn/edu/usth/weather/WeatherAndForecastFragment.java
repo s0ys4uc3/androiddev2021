@@ -46,7 +46,7 @@ public class WeatherAndForecastFragment extends Fragment {
         // Inflate the overflowMenu for this fragment
         View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
         wView(new uppercloud(), mParam1, R.id.kumori);
-        wView(new ForecastFragment(), mParam2, R.id.forecast_);
+        wView(new ForecastFragment(), mParam1, R.id.forecast_);
         return view;
     }
 
