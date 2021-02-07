@@ -21,11 +21,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/wtemp"
             android:text="12C" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/wtempdes"
             android:text="@string/kumori" />
     </LinearLayout>
     <ImageView

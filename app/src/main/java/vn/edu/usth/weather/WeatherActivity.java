@@ -7,73 +7,17 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 
 public class WeatherActivity extends AppCompatActivity {
     public String[] titles = {"Hanoi", "Paris", "Toulouse"};
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.overmenu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.rafraichir:
-                Toast.makeText(getApplicationContext(), "Refreshing", Toast.LENGTH_LONG).show();
-                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-
-                Response.Listener<Bitmap> listener = new Response.Listener<Bitmap>() {
-                    @Override
-                    public void onResponse(Bitmap response) {
-                        LinearLayout ln = (LinearLayout) findViewById(R.id.custombg);
-                        BitmapDrawable bitimg = new BitmapDrawable(getApplicationContext().getResources(), response);
-                        bitimg.setAlpha(75);
-                        ln.setBackground(bitimg);
-                    }
-                };
-
-                ImageRequest imageRequest = new ImageRequest(
-                        "https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/",
-                        listener,
-                        0,
-                        0, ImageView.ScaleType.CENTER,
-                        Bitmap.Config.ARGB_8888,
-                        null);
-
-                queue.add(imageRequest);
-                return true;
-            case R.id.settei:
-                  Intent setteiIntent = new Intent(this, PrefActivity.class);
-                startActivity(setteiIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,9 +83,10 @@ public class WeatherActivity extends AppCompatActivity {
             return frag;
         }
 
-
         @Override
-        public int getItemCount() {return 3;}
+        public int getItemCount() {
+            return 3;
+        }
     }
 
 }

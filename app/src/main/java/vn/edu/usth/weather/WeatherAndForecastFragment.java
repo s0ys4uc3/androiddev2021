@@ -1,13 +1,27 @@
 package vn.edu.usth.weather;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 
 public class WeatherAndForecastFragment extends Fragment {
 
@@ -38,6 +52,45 @@ public class WeatherAndForecastFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.overmenu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //handle menu item clicks
+        int id = item.getItemId();
+
+        if (id == R.id.rafraichir) {
+            Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_LONG).show();
+            RequestQueue queue = Volley.newRequestQueue(getContext());
+            Response.Listener<Bitmap> listener = response -> {
+                LinearLayout ln = (LinearLayout) getView().findViewById(R.id.custombg);
+                BitmapDrawable bitimg = new BitmapDrawable(getContext().getResources(), response);
+                bitimg.setAlpha(75);
+                ln.setBackground(bitimg);
+            };
+            ImageRequest imageRequest = new ImageRequest(
+                    "https://static.wikia.nocookie.net/charlotte-anime/images/8/8c/Charlotte_Promotional_Picture.jpeg/",
+                    listener,
+                    0,
+                    0, ImageView.ScaleType.CENTER,
+                    Bitmap.Config.ARGB_8888,
+                    null);
+            queue.add(imageRequest);
+        }
+        if (id == R.id.settei) {
+            Intent setteiIntent = new Intent(getContext(), PrefActivity.class);
+            startActivity(setteiIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
