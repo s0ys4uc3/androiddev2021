@@ -16,12 +16,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class WeatherAndForecastFragment extends Fragment {
 
@@ -68,8 +75,27 @@ public class WeatherAndForecastFragment extends Fragment {
         int id = item.getItemId();
 
         if (id == R.id.rafraichir) {
+            TextView temp = getView().findViewById(R.id.wtemp);
+            TextView tempdes = getView().findViewById(R.id.wtempdes);
+            String tempURL = "http://api.openweathermap.org/data/2.5/weather?q=" + mParam1 + "&appid=7e29cda89b3ee0d5e152ae41598e7bdb&units=metric";
             Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_LONG).show();
             RequestQueue queue = Volley.newRequestQueue(getContext());
+            JsonObjectRequest jsreq = new JsonObjectRequest(Request.Method.GET,
+                    tempURL, null,
+                    (Response.Listener<JSONObject>) response -> {
+                        try {
+                            JSONObject outtemp = response.getJSONObject("main");
+                            temp.setText(outtemp.getString("temp"));
+                            JSONArray tenki = response.getJSONArray("weather");
+                            JSONObject wt = tenki.getJSONObject(0);
+                            tempdes.setText(wt.getString("main"));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    },
+                    (Response.ErrorListener) error -> tempdes.setText("Error")
+            );
             Response.Listener<Bitmap> listener = response -> {
                 LinearLayout ln = (LinearLayout) getView().findViewById(R.id.custombg);
                 BitmapDrawable bitimg = new BitmapDrawable(getContext().getResources(), response);
@@ -84,6 +110,7 @@ public class WeatherAndForecastFragment extends Fragment {
                     Bitmap.Config.ARGB_8888,
                     null);
             queue.add(imageRequest);
+            queue.add(jsreq);
         }
         if (id == R.id.settei) {
             Intent setteiIntent = new Intent(getContext(), PrefActivity.class);
